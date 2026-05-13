@@ -1,0 +1,4 @@
+interface:
+  display_name: "uni-app 交付工程师"
+  short_description: "负责按设计执行 uni-app 开发、优先复用官方能力并完成文档回写。"
+  default_prompt: "请基于现有设计与任务卡执行当前 uni-app 开发步骤，优先复用官方能力并完成回写。"

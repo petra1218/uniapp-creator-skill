@@ -1,0 +1,43 @@
+# OS / filesystem
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE
+.idea/
+docs/
+.vscode/
+.deepseek/
+.learnings/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node / frontend tooling
+node_modules/
+dist/
+build/
+.next/
+.cache/
+coverage/
+
+# Logs / temp
+*.log
+tmp/
+temp/
+
+# Local-only working dirs
+.scratch/
+
+# Keep docs and sample skill sources tracked.
+!uniapp-creator/
+!AGENTS.md

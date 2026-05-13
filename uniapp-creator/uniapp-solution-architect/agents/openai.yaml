@@ -1,0 +1,4 @@
+interface:
+  display_name: "uni-app 方案设计师"
+  short_description: "负责 uni-app 方案设计、官方模板选择、生态复用与执行导向设计输出。"
+  default_prompt: "请基于项目上下文为当前 uni-app 需求完成方案设计，明确模板、官方复用、平台策略与执行拆分。"
