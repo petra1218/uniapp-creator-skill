@@ -20,7 +20,51 @@
 4. 自定义接口或第三方直连
    - 只有官方路径不适合，或第三方明确要求时才使用
 
-设计输出里不能只写“云端处理”。必须明确每个模块使用哪条路径，以及为什么。
+设计输出里不能只写"云端处理"。必须明确每个模块使用哪条路径，以及为什么。
+
+### 1.1 DB Schema 格式强制（跨文档统一规则）
+
+**所有数据模型定义必须使用 uniCloud 官方 DB Schema 格式**，可直接部署为 `uniCloud/database/{collection-name}.schema.json`。
+
+**禁止格式：** `columns: [...]` 数组格式
+
+**必须格式：**
+
+```json
+{
+  "bsonType": "object",
+  "required": ["field1", "field2"],
+  "permission": {
+    "read": "权限表达式",
+    "create": "权限表达式",
+    "update": "权限表达式",
+    "delete": "权限表达式"
+  },
+  "properties": {
+    "field1": {
+      "bsonType": "string",
+      "label": "字段说明",
+      "description": "详细描述"
+    },
+    "field2": {
+      "bsonType": "number",
+      "label": "字段说明"
+    }
+  }
+}
+```
+
+**最低要求：**
+- `bsonType`: 必须为 `"object"`
+- `required`: 列出所有必填字段
+- `permission`: 必须包含 `read`、`create`、`update`、`delete` 四种操作的权限表达式
+- `properties`: 必须使用对象格式（`{}`），每个字段必须包含 `bsonType` 和 `label`
+- `indexes`: 高频查询字段必须列出索引定义
+
+**跨文档一致性规则：**
+- `data-model.md` 中定义的每个集合，在 `api-contract.md` 中必须有对应的云对象/云函数方法
+- `api-contract.md` 中每个云对象/云函数方法操作的集合，必须在 `data-model.md` 中有定义
+- 如果发现不一致，以 `data-model.md` 为基准补全缺失方
 
 ## 2. uni-id 与权限边界
 

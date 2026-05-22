@@ -40,6 +40,18 @@
 - 当前版本号
 - 下一步建议
 - `docs/AGENTS.md` 的根目录同步状态
+- `docs/project-system.md` 的文档状态是否已同步更新
+
+## 执行前跨文档一致性快速校验
+
+执行代码前，快速校验以下跨文档一致性：
+
+1. 任务卡的目标目录名是否与 `overview.md` 建项结论中的项目名一致
+2. `api-contract.md` 中当前任务涉及的云对象方法，对应集合是否在 `data-model.md` 中存在
+3. `data-model.md` 中的集合定义是否使用官方 DB Schema 格式（`properties: {}`）
+4. `project-system.md` 中的文档状态是否与实际文件一致
+
+如果发现不一致，先修正文档再开始实施。
 
 ## 执行计划来源
 

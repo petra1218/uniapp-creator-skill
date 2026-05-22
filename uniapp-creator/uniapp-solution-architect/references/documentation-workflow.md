@@ -59,3 +59,19 @@
 - 不要只检查文件是否存在，要检查章节是否齐全
 - 不要只看 `docs/superpowers/` 过程稿，要检查最终 `docs/`
 - 如果还是旧骨架，先升级文档，再结束设计
+- `overview.md` 中只允许一套目录结构
+- `data-model.md` 必须使用 uniCloud 官方 DB Schema 格式（`properties: {}`，不是 `columns: []`）
+- 每张任务卡的目标目录名必须与 `overview.md` 建项结论中的项目名一致
+- 跨文档一致性：api-contract 中的云对象 ↔ data-model 中的集合、overview 项目名 ↔ 任务卡目标目录、flows 中的调用 ↔ api-contract 中的方法
+
+## 跨文档一致性校验步骤
+
+设计完成前，按以下步骤执行跨文档一致性校验：
+
+1. 从 `api-contract.md` 提取所有云对象/云函数方法及其操作的集合名
+2. 逐一在 `data-model.md` 中确认对应集合定义存在
+3. 从 `overview.md` 提取项目名（如 `rc-transcribe-client`、`rc-transcribe-admin`）
+4. 逐一在所有任务卡中确认 `## 目标仓库或目录` 引用的项目名一致
+5. 从 `flows.md` 的 Mermaid 图中提取所有云对象/云函数调用
+6. 逐一在 `api-contract.md` 中确认对应方法存在
+7. 如果发现不一致，以 data-model.md 和 overview.md 为基准，补全或修正缺失方
