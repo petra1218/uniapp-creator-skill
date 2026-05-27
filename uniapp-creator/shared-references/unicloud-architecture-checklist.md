@@ -12,16 +12,16 @@
 
 | 服务商类型 | 目录名 | 说明 |
 |-----------|--------|------|
-| 阿里云 | `uniCloud/` | 最常用，也是 HBuilderX 默认 |
+| 阿里云 | `uniCloud-aliyun/` | HBuilderX 创建阿里云项目时使用 |
 | 支付宝云 | `uniCloud-alipay/` | 与阿里云不兼容的独立服务空间 |
 | 腾讯云 | `uniCloud-tcb/` | 与阿里云不兼容的独立服务空间 |
 
 **检查规则：**
-- 所有文档中 `uniCloud/cloudfunctions/`、`uniCloud/database/`、`uniCloud/uni_modules/` 等路径引用，必须与目标服务商目录名一致
+- 所有文档中 `uniCloud-aliyun/cloudfunctions/`、`uniCloud-aliyun/database/`、`uniCloud-aliyun/uni_modules/` 等路径引用中的目录名，必须与目标服务商目录名一致
 - 客户端项目和后台管理端项目使用相同服务商和目录名
-- 如果设计文档中未标注服务商类型而直接使用 `uniCloud/`，视为设计缺失
+- 如果设计文档中未标注服务商类型而直接使用不存在的 `uniCloud/` 目录名，视为设计缺失
 
-**常见错误：** 目标服务商为支付宝云，但文档中所有路径写成 `uniCloud/cloudfunctions/xxx`，导致执行时云函数生成到错误目录。必须在设计阶段就使用 `uniCloud-alipay/cloudfunctions/xxx`。
+**常见错误：** 目标服务商为支付宝云，但文档中所有路径写成 `uniCloud/cloudfunctions/xxx`，导致执行时云函数生成到错误目录。必须在设计阶段就使用 `uniCloud-alipay/cloudfunctions/xxx`。同理，阿里云项目也必须使用 `uniCloud-aliyun/cloudfunctions/xxx`。
 
 ## 1. 数据访问路径
 

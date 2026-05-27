@@ -124,8 +124,8 @@ author: qiang
 - `api-contract.md` 是否覆盖所有在任务卡或 `data-model.md` 映射表中引用的方法（包括定时任务触发的云函数；如果缺失，先补 api-contract.md 或回退到 `uniapp-solution-architect`）
 - `data-model.md` 中数值型字段的字段名、label、description 是否单位语义一致（如发现字段名含 `minutes` 但 label 写"秒"，或 label 写"价格（分）"但需求使用"元"，先修正 data-model.md）
 - **`data-model.md` 中同类型数值字段是否使用统一存储单位。** 全文搜索所有时长字段（label 含"时长""额度""分钟""秒"）、所有金额字段（label 含"金额""价格""元""分"），逐字段核对存储单位是否跨集合统一。若发现不同集合的时长字段分别用"秒"和"分钟"，先修正 data-model.md 统一为一种单位再继续实施
-- **确认 DB Schema 的实际部署项目。** 默认放在客户端项目的 `uniCloud/database/` 下。如果 `overview.md` 的目录结构中后台项目也出现了 `database/` 目录，在实施前与设计确认实际部署位置并修正 overview.md
-- **确认 uniCloud 目录名与目标服务商类型一致。** 从 `overview.md` `## HBuilderX 建项方式` 中提取服务商类型和 uniCloud 目录名，确认两者匹配（阿里云→`uniCloud/`、支付宝云→`uniCloud-alipay/`、腾讯云→`uniCloud-tcb/`）。如果 overview.md 未标注服务商类型或目录名，视为设计缺失，先回退到 `uniapp-solution-architect` 补充。**执行时所有云函数、数据库 schema 文件必须写入正确的目录名下**，禁止在未确认服务商的情况下默认写入 `uniCloud/`
+- **确认 DB Schema 的实际部署项目。** 默认放在客户端项目的 `{uniCloud目录名}/database/` 下。如果 `overview.md` 的目录结构中后台项目也出现了 `database/` 目录，在实施前与设计确认实际部署位置并修正 overview.md
+- **确认 uniCloud 目录名与目标服务商类型一致。** 从 `overview.md` `## HBuilderX 建项方式` 中提取服务商类型和 uniCloud 目录名，确认两者匹配（阿里云→`uniCloud-aliyun/`、支付宝云→`uniCloud-alipay/`、腾讯云→`uniCloud-tcb/`）。如果 overview.md 未标注服务商类型或目录名，视为设计缺失，先回退到 `uniapp-solution-architect` 补充。**执行时所有云函数、数据库 schema 文件必须写入正确的目录名下**，禁止在未确认服务商的情况下默认写入任何 `uniCloud*` 目录
 - **确认跨云对象调用方式已在设计中明确。** 如果设计涉及多个云对象之间的调用（如 `transcription-co` 调用 `quota-co.consumeQuota`），必须确认 `api-contract.md` 中有 `## 跨云对象调用约定` 章节并覆盖所有调用关系。如果缺失，先回退到 `uniapp-solution-architect` 补充设计
 - **确认所有任务卡的页面路径与 overview.md 页面清单一致。** 提取 overview.md `## 页面结构与关键入口` 中所有页面路径，逐条搜索每张任务卡的 `## 输出文件` 和 `## 范围`，确认页面路径逐字符匹配。若发现不一致（如 overview 写 `pages/mine/index` 而任务卡写 `pages/profile/index`），以 overview.md 为基准修正任务卡后再继续实施
 - **如存在 `docs/design/cross-review-fix-log.md`，先阅读它。** 该文件由 `uniapp-design-reviewer` skill 在中间审查阶段生成，记录了已修复的问题和仍存在的风险项。如果该文件存在，至少确认其中的 P0 问题已全部修复。如果不存在该文件，建议先运行 `uniapp-design-reviewer` 对设计文档进行中间审查再进入实施

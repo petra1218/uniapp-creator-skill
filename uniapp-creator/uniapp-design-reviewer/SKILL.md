@@ -97,7 +97,7 @@ author: qiang
 - **修复原则**：以 overview 为基准，直接修正任务卡中不一致的路径名
 
 #### 组 6：overview.md 服务商类型 ↔ 全文档 uniCloud 目录名
-- overview `## HBuilderX 建项方式` 中声明的服务商类型（阿里云/支付宝云/腾讯云），是否与**所有文档**中引用的 `uniCloud` 目录名一致（阿里云→`uniCloud/`、支付宝云→`uniCloud-alipay/`、腾讯云→`uniCloud-tcb/`）
+- overview `## HBuilderX 建项方式` 中声明的服务商类型（阿里云/支付宝云/腾讯云），是否与**所有文档**中引用的 `uniCloud` 目录名一致（阿里云→`uniCloud-aliyun/`、支付宝云→`uniCloud-alipay/`、腾讯云→`uniCloud-tcb/`）
 - 检查范围覆盖：
   - `overview.md` 目录结构中的 `uniCloud` 目录名
   - `api-contract.md` 中所有 `uniCloud/cloudfunctions/` 等部署路径
