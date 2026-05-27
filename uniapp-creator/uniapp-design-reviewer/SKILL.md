@@ -11,7 +11,7 @@ trigger_phrases:
   - 审查文档一致性
   - 设计中间审查
   - review design
-version: "1.0"
+version: "1.1"
 agent_created: true
 author: qiang
 ---
@@ -20,8 +20,8 @@ author: qiang
 
 ## 文档信息
 
-- 当前版本：`v1.0`
-- 更新时间：`2026-05-21`
+- 当前版本：`v1.1`
+- 更新时间：`2026-05-27`
 - 当前定位：设计→执行的中间审查与修复层
 
 ## 概览
@@ -29,7 +29,7 @@ author: qiang
 在 `uniapp-solution-architect` 完成设计输出后、`uniapp-delivery-engineer` 开始执行前，对 `docs/` 下所有设计文档进行系统性审查。
 
 核心职责：
-1. **检查** — 跨文档一致性校验（5组关系 + 数据单位 + 状态枚举）
+1. **检查** — 跨文档一致性校验（6组关系 + 数据单位 + 状态枚举）
 2. **修复** — P0 和 P1 问题直接修复（修改文档文件）
 3. **报告** — 输出简洁的审查修复日志
 4. **放行** — 确认文档可以交付给 delivery-engineer
@@ -95,6 +95,15 @@ author: qiang
 #### 组 5：overview.md 页面清单 ↔ 任务卡输出文件路径
 - 所有任务卡的 `## 输出文件` 和 `## 范围` 中的页面路径，是否与 overview `## 页面结构与关键入口` 逐字符一致
 - **修复原则**：以 overview 为基准，直接修正任务卡中不一致的路径名
+
+#### 组 6：overview.md 服务商类型 ↔ 全文档 uniCloud 目录名
+- overview `## HBuilderX 建项方式` 中声明的服务商类型（阿里云/支付宝云/腾讯云），是否与**所有文档**中引用的 `uniCloud` 目录名一致（阿里云→`uniCloud/`、支付宝云→`uniCloud-alipay/`、腾讯云→`uniCloud-tcb/`）
+- 检查范围覆盖：
+  - `overview.md` 目录结构中的 `uniCloud` 目录名
+  - `api-contract.md` 中所有 `uniCloud/cloudfunctions/` 等部署路径
+  - `data-model.md` 中 DB Schema 部署路径（如 `uniCloud/database/`）
+  - 所有任务卡的云函数目标路径
+- **修复原则**：以 overview.md 建项结论中的服务商类型为基准，全局替换所有文档中不一致的目录名
 
 ### Step 3: 专项检查
 
@@ -165,6 +174,7 @@ author: qiang
 | flows ↔ api-contract | ✅/⚠️/❌ |
 | overview 页面 ↔ ui-guidelines | ✅/⚠️/❌ |
 | overview 页面 ↔ 任务卡路径 | ✅/⚠️/❌ |
+| overview 服务商类型 ↔ 目录名 | ✅/⚠️/❌ |
 | 数据单位一致性 | ✅/⚠️/❌ |
 | 状态枚举一致性 | ✅/⚠️/❌ |
 | 定时任务 Schema | ✅/⚠️/❌ |
@@ -201,6 +211,7 @@ author: qiang
 | 状态枚举不一致 | flows.md 状态映射表 | data-model.md |
 | 数据单位不一致 | best-practices.md 规则 | data-model.md + api-contract.md |
 | 集合缺失 | data-model.md 是基准 | api-contract.md 补充引用 |
+| uniCloud 目录名不一致 | overview.md 服务商类型 | 所有文档中的目录名引用 |
 
 ## 不要这样做
 

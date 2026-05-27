@@ -4,7 +4,24 @@
 
 凡是方案或实现涉及 `uniCloud`，先按本清单确定官方主路径，再决定是否需要自定义实现。
 
-不要把 `uniCloud` 简化成“云函数后端”。优先按官方体系判断：`uni-id`、`DB Schema`、`clientDB`、云对象、云函数、URL 化、云存储、前端网页托管、SSR。
+不要把 `uniCloud` 简化成"云函数后端"。优先按官方体系判断：`uni-id`、`DB Schema`、`clientDB`、云对象、云函数、URL 化、云存储、前端网页托管、SSR。
+
+## 0. 服务商与目录命名
+
+**uniCloud 服务商类型决定项目目录名。** 设计阶段必须明确服务商类型，并确保全文档使用一致的目录名。
+
+| 服务商类型 | 目录名 | 说明 |
+|-----------|--------|------|
+| 阿里云 | `uniCloud/` | 最常用，也是 HBuilderX 默认 |
+| 支付宝云 | `uniCloud-alipay/` | 与阿里云不兼容的独立服务空间 |
+| 腾讯云 | `uniCloud-tcb/` | 与阿里云不兼容的独立服务空间 |
+
+**检查规则：**
+- 所有文档中 `uniCloud/cloudfunctions/`、`uniCloud/database/`、`uniCloud/uni_modules/` 等路径引用，必须与目标服务商目录名一致
+- 客户端项目和后台管理端项目使用相同服务商和目录名
+- 如果设计文档中未标注服务商类型而直接使用 `uniCloud/`，视为设计缺失
+
+**常见错误：** 目标服务商为支付宝云，但文档中所有路径写成 `uniCloud/cloudfunctions/xxx`，导致执行时云函数生成到错误目录。必须在设计阶段就使用 `uniCloud-alipay/cloudfunctions/xxx`。
 
 ## 1. 数据访问路径
 
